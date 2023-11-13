@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id     Int      @id @default(autoincrement())
+  name   String
+  Matriz Matriz[]
+}
+
+model Actor {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  prioridad Int
+  coments   String?
+  parent    Boolean
+  hijos     Actor[]  @relation("ActortoActor")
+  celdas    Celda[]
+  Actor     Actor?   @relation("ActortoActor", fields: [actorId], references: [id], onDelete: Cascade)
+  actorId   Int?
+  Matriz    Matriz?  @relation(fields: [matrizId], references: [id])
+  matrizId  Int?
+}
+
+model Tema {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  prioridad Int
+  coments   String
+  parent    Boolean
+  celdas    Celda[] 
+  hijos     Tema[]   @relation("TematoTema")
+  Tema      Tema?    @relation("TematoTema", fields: [temaId], references: [id])
+  temaId    Int?
+  Matriz    Matriz?  @relation(fields: [matrizId], references: [id])
+  matrizId  Int?
+}
+
+model Celda {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  prioridad Int
+  tiempo    Int
+  coment    String
+  Actor     Actor?   @relation(fields: [actorId], references: [id], onDelete: Cascade)
+  actorId   Int?
+  Tema      Tema?    @relation(fields: [temaId], references: [id], onDelete: Cascade)
+  temaId    Int?
+  Matriz    Matriz?  @relation(fields: [matrizId], references: [id], onDelete: Cascade)
+  matrizId  Int?
+}
+
+model Estado {
+  id       Int @id @default(autoincrement())
+  NumActor Int
+  NumTemas Int
+}
+
+model Matriz {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  Actores   Actor[]
+  Temas     Tema[]
+  Celdas    Celda[]
+}

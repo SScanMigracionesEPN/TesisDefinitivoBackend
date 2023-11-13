@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String
+}
+
+type Query {
+  allUsers: [User!]
+  user(id: Int!): User!
+}
+
+type Mutation {
+  create(data: CreateUser!): User!
+  updateUser(updateUserInput: UniqueUser!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreateUser {
+  name: String
+}
+
+input UniqueUser {
+  id: Float
+  name: String
+}
+
+type Subscription {
+  user: User!
+}
