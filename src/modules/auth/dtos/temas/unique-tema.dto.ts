@@ -1,11 +1,10 @@
-
 import { Field, InputType } from "@nestjs/graphql";
 
 @InputType()
-export class CreateUser{
+export class UniqueTema{
     
     @Field({nullable:true})
-    id: number;
+    id: number
     @Field({nullable:true})
     name: string;
 }
