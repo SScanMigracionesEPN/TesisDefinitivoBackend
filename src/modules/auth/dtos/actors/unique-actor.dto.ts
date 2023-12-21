@@ -4,8 +4,6 @@ import { Field, InputType } from "@nestjs/graphql";
 @InputType()
 export class UniqueActor {
 
-
-
     @Field({ nullable: true })
     id: number
 
@@ -26,14 +24,7 @@ export class UniqueActor {
 
     @Field()
     parent: boolean;
-
-   
-    @Field({ nullable: true })
-    actorId?: number;
-
-
-    @Field({ nullable: true })
-    matrizId?: number;
+    
 }
 
 

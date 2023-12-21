@@ -13,6 +13,3 @@ export class Estado {
 
 
 }
-
-///NumActor: number
-//NumTemas: number

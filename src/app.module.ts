@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { PrismaService } from './prisma.service'
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { PrismaService } from './prisma.service';
 
-import { join } from 'path'
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { join } from 'path';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
@@ -17,16 +17,16 @@ import { AuthModule } from './modules/auth/auth.module';
           path: '/graphql',
           onConnect: () => {
             // const { connectionParams, extra } = context;
-    
-            console.log("Connecting to GraphQL-WS");
+
+            console.log('Connecting to GraphQL-WS');
             // extra.loaders = createTaskLoaders(tasksService);
           },
         },
-        
+
         'subscriptions-transport-ws': {
           path: '/graphql',
           onConnect: (connectionParams) => {
-            console.log("Connecting to GraphQL-Subscriptions");
+            console.log('Connecting to GraphQL-Subscriptions');
             return {
               // loaders: createTaskLoaders(tasksService),
             };
@@ -38,8 +38,6 @@ import { AuthModule } from './modules/auth/auth.module';
   ],
   controllers: [],
   providers: [PrismaService],
-  exports:[PrismaService]
+  exports: [PrismaService],
 })
 export class AppModule {}
-
-

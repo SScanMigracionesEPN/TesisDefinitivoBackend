@@ -15,9 +15,23 @@ import { CeldaResolver } from './resolvers/celda/celda.resolver';
 
 
 import { PrismaService } from 'src/prisma.service';
+import { EstadoResolver } from './resolvers/estado/estado.resolver';
+import { EstadoService } from './services/estado/estado.service';
 
 @Global()
 @Module({
-  providers: [ PrismaService,UserService, UserResolver,TemaService, TemaResolver,CeldaService, CeldaResolver]
+  providers: [ PrismaService,UserService, 
+    TemaService, 
+    CeldaService,
+    UserService,
+    ActorService,
+    EstadoService, 
+    TemaResolver,
+    UserResolver,
+    CeldaResolver,
+    ActorResolver,
+    EstadoResolver,
+    
+  ]
 })
 export class AuthModule {}

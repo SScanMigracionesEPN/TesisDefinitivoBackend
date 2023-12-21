@@ -2,11 +2,9 @@ import { Args, Context, Mutation, Query, Resolver,Int, Subscription  } from '@ne
 import { ActorService } from '../../services/actor/actor.service';
 import { Inject } from '@nestjs/common';
 import { Actor } from '../../entities/actor.entity';
-import { promises } from 'dns';
 import { CreateActor } from '../../dtos/actors/create-actor.dto';
 import { UniqueActor } from '../../dtos/actors/unique-actor.dto';
 
-/////
 
 
 
@@ -16,7 +14,7 @@ export class ActorResolver {
 
 
     @Mutation((returns) => Actor)
-    async create(
+    async createActor(
         @Args("data") data: CreateActor,
         @Context() ctx
     ): Promise<Actor> {
@@ -28,8 +26,6 @@ export class ActorResolver {
         return this.actorService.findAll({});
     }
 
-
-    /////////// editar
 
     @Mutation(() => Actor)
     updateActor(@Args('updateActorInput') updateActorInput: UniqueActor) {

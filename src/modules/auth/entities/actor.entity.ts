@@ -1,26 +1,26 @@
-
-import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Actor {
+  @Field(() => Int)
+  id: number;
 
-    @Field(() => Int)
-    id: number;
-    @Field(() => String, { nullable: true })
-    name: string | null;
+  @Field()
+  createdAt: Date;
 
-    @Field()
-    prioridad: number;
-    @Field()
-    tiempo:    number;
-    @Field()
-    coment?:   string;
-    
-    @Field()
-    actorId:   number;
-    @Field()
-    matrizId?:  number;
+  @Field()
+  updatedAt: Date;
+
+  @Field(() => String)
+  name: string | null;
+
+  @Field()
+  prioridad: number;
+  
+  @Field()
+  coments?: string;
+
+  @Field()
+  parent: boolean;
 
 }
-
-

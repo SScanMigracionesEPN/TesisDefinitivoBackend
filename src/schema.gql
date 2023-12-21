@@ -7,18 +7,86 @@ type User {
   name: String
 }
 
+type Actor {
+  id: Int!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String!
+  prioridad: Float!
+  coments: String!
+  parent: Boolean!
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type Tema {
+  id: Int!
+  name: String
+}
+
+type Celda {
+  id: Int!
+  createdAt: Timestamp
+  updatedAt: Timestamp
+  prioridad: Float
+  tiempo: Float
+  coment: String
+}
+
+type Estado {
+  id: Float
+  NumActor: Int!
+  NumTemas: Int!
+}
+
 type Query {
+  allTemas: [Tema!]
+  tema(id: Int!): Tema!
   allUsers: [User!]
   user(id: Int!): User!
+  allCeldas: [Celda!]
+  celda(id: Int!): Celda!
+  allActors: [Actor!]
+  actor(id: Int!): Actor!
+  allEstados: [Estado!]
+  estado(id: Int!): Estado!
 }
 
 type Mutation {
-  create(data: CreateUser!): User!
+  createTema(data: CreateTema!): Tema!
+  updateTema(updateTemaInput: UniqueTema!): Tema!
+  removeTema(id: Int!): Tema!
+  createUser(data: CreateUser!): User!
   updateUser(updateUserInput: UniqueUser!): User!
   removeUser(id: Int!): User!
+  createCelda(data: CreateCelda!): Celda!
+  updateCelda(updateCeldaInput: UniqueCelda!): Celda!
+  removeCelda(id: Int!): Celda!
+  createActor(data: CreateActor!): Actor!
+  updateActor(updateActorInput: UniqueActor!): Actor!
+  removeActor(id: Int!): Actor!
+  createEstado(data: CreateEstado!): Estado!
+  updateEstado(updateEstadoInput: UniqueEstado!): Estado!
+  removeEstado(id: Int!): Estado!
+}
+
+input CreateTema {
+  name: String
+  coments: String
+  prioridad: Float
+  parent: Boolean
+}
+
+input UniqueTema {
+  id: Float
+  name: String
 }
 
 input CreateUser {
+  id: Float
   name: String
 }
 
@@ -27,6 +95,55 @@ input UniqueUser {
   name: String
 }
 
+input CreateCelda {
+  id: Float
+  createdAt: Timestamp
+  updatedAt: Timestamp
+  prioridad: Float
+  tiempo: Float
+  coment: String
+}
+
+input UniqueCelda {
+  id: Float
+  prioridad: Float
+  tiempo: Float
+  coment: String
+}
+
+input CreateActor {
+  name: String!
+  prioridad: Float!
+  coments: String!
+  parent: Boolean!
+}
+
+input UniqueActor {
+  id: Float
+  name: String
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  prioridad: Float!
+  coments: String
+  parent: Boolean!
+}
+
+input CreateEstado {
+  id: Float
+  NumActor: Float
+  NumTemas: Float
+}
+
+input UniqueEstado {
+  id: Float
+  NumActor: Float
+  NumTemas: Float
+}
+
 type Subscription {
+  tema: Tema!
   user: User!
+  celda: Celda!
+  actor: Actor!
+  estado: Estado!
 }
