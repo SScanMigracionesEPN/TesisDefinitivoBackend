@@ -37,7 +37,7 @@ model Tema {
   prioridad Int
   coments   String
   parent    Boolean
-  celdas    Celda[] 
+  celdas    Celda[]
   hijos     Tema[]   @relation("TematoTema")
   Tema      Tema?    @relation("TematoTema", fields: [temaId], references: [id])
   temaId    Int?
@@ -75,4 +75,12 @@ model Matriz {
   Actores   Actor[]
   Temas     Tema[]
   Celdas    Celda[]
+}
+
+model Proyectos {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  description String
 }

@@ -10,11 +10,6 @@ export class UniqueActor {
     @Field({nullable:true})
     name: string;
 
-    @Field()
-    createdAt: Date;
-
-    @Field()
-    updatedAt: Date;
 
     @Field()
     prioridad: number;

@@ -377,3 +377,6 @@ const userWithUpdatedProfile = await prisma.user.update({
 -npx prisma migrate dev
 ## Desplegar
 -docker compose up -d --build
+
+### correr el proyecto
+- npm run dev

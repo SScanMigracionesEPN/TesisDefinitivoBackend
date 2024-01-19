@@ -5,11 +5,6 @@ export class Actor {
   @Field(() => Int)
   id: number;
 
-  @Field()
-  createdAt: Date;
-
-  @Field()
-  updatedAt: Date;
 
   @Field(() => String)
   name: string | null;

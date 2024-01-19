@@ -9,18 +9,11 @@ type User {
 
 type Actor {
   id: Int!
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
   name: String!
   prioridad: Float!
   coments: String!
   parent: Boolean!
 }
-
-"""
-`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
-"""
-scalar Timestamp
 
 type Tema {
   id: Int!
@@ -29,8 +22,6 @@ type Tema {
 
 type Celda {
   id: Int!
-  createdAt: Timestamp
-  updatedAt: Timestamp
   prioridad: Float
   tiempo: Float
   coment: String
@@ -104,6 +95,11 @@ input CreateCelda {
   coment: String
 }
 
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
 input UniqueCelda {
   id: Float
   prioridad: Float
@@ -121,8 +117,6 @@ input CreateActor {
 input UniqueActor {
   id: Float
   name: String
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
   prioridad: Float!
   coments: String
   parent: Boolean!
