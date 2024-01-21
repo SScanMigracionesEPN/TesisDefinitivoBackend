@@ -77,7 +77,7 @@ model Matriz {
   Celdas    Celda[]
 }
 
-model Proyectos {
+model Proyecto {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

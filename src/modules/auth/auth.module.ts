@@ -17,6 +17,10 @@ import { CeldaResolver } from './resolvers/celda/celda.resolver';
 import { PrismaService } from 'src/prisma.service';
 import { EstadoResolver } from './resolvers/estado/estado.resolver';
 import { EstadoService } from './services/estado/estado.service';
+import { ProyectoService } from './services/proyecto/proyecto.service';
+import { ProyectoResolver } from './resolvers/proyecto/proyecto.resolver';
+import { MatrizService } from './services/matriz/matriz.service';
+import { MatrizResolver } from './resolvers/matriz/matriz.resolver';
 
 @Global()
 @Module({
@@ -31,6 +35,10 @@ import { EstadoService } from './services/estado/estado.service';
     CeldaResolver,
     ActorResolver,
     EstadoResolver,
+    ProyectoService,
+    ProyectoResolver,
+    MatrizService,
+    MatrizResolver,
     
   ]
 })

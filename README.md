@@ -380,3 +380,26 @@ const userWithUpdatedProfile = await prisma.user.update({
 
 ### correr el proyecto
 - npm run dev
+
+
+
+### subir al git 
+
+# Añadir todos los archivos modificados al área de preparación
+git add .
+
+# Hacer un commit con un mensaje descriptivo
+git commit -m "Tu mensaje descriptivo aquí"
+
+# Empujar los cambios al repositorio remoto
+git push
+# Comprobar
+git status
+
+
+
+#### generar servicios
+$ nest g service modules/auth/services/proyecto
+
+#### generar resolver
+$ nest g resolver modules/auth/resolvers/proyecto
