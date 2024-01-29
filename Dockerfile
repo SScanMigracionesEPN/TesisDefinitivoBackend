@@ -11,10 +11,12 @@ COPY package*.json ./
 RUN npm install
 
 
+
 # Bundle app source
 COPY . .
-# RUN npx prisma migrate dev
 
+# RUN npx prisma migrate dev
+RUN npx prisma migrate dev --name init
 
 # Creates a "dist" folder with the production build
 RUN npm run build

@@ -3,21 +3,16 @@
 # ------------------------------------------------------
 
 type User {
-  id: Int!
+  id: Int
   name: String
 }
 
 type Actor {
   id: Int!
   name: String!
-  prioridad: Float!
+  prioridad: Int!
   coments: String!
   parent: Boolean!
-}
-
-type Tema {
-  id: Int!
-  name: String
 }
 
 type Celda {
@@ -33,26 +28,46 @@ type Estado {
   NumTemas: Int!
 }
 
+type Matriz {
+  id: Int!
+}
+
+type Proyecto {
+  id: Float
+  name: String
+  description: String
+}
+
+type Tema {
+  id: Int!
+  name: String
+}
+
 type Query {
-  allTemas: [Tema!]
-  tema(id: Int!): Tema!
   allUsers: [User!]
   user(id: Int!): User!
+  findByName(username: String!): User!
+  allTemas: [Tema!]
+  tema(id: Int!): Tema!
   allCeldas: [Celda!]
   celda(id: Int!): Celda!
   allActors: [Actor!]
   actor(id: Int!): Actor!
   allEstados: [Estado!]
   estado(id: Int!): Estado!
+  allProyectos: [Proyecto!]
+  proyecto(id: Int!): Proyecto!
+  allMatrizs: [Matriz!]
+  matriz(id: Int!): Matriz!
 }
 
 type Mutation {
-  createTema(data: CreateTema!): Tema!
-  updateTema(updateTemaInput: UniqueTema!): Tema!
-  removeTema(id: Int!): Tema!
   createUser(data: CreateUser!): User!
   updateUser(updateUserInput: UniqueUser!): User!
   removeUser(id: Int!): User!
+  createTema(data: CreateTema!): Tema!
+  updateTema(updateTemaInput: UniqueTema!): Tema!
+  removeTema(id: Int!): Tema!
   createCelda(data: CreateCelda!): Celda!
   updateCelda(updateCeldaInput: UniqueCelda!): Celda!
   removeCelda(id: Int!): Celda!
@@ -62,6 +77,21 @@ type Mutation {
   createEstado(data: CreateEstado!): Estado!
   updateEstado(updateEstadoInput: UniqueEstado!): Estado!
   removeEstado(id: Int!): Estado!
+  createProyecto(data: CreateProyecto!): Proyecto!
+  updateProyecto(updateProyectoInput: UniqueProyecto!): Proyecto!
+  removeProyecto(id: Int!): Proyecto!
+  allMatrizs: Matriz!
+  removeMatriz(id: Int!): Matriz!
+}
+
+input CreateUser {
+  id: Float
+  name: String
+}
+
+input UniqueUser {
+  id: Float
+  name: String
 }
 
 input CreateTema {
@@ -72,16 +102,6 @@ input CreateTema {
 }
 
 input UniqueTema {
-  id: Float
-  name: String
-}
-
-input CreateUser {
-  id: Float
-  name: String
-}
-
-input UniqueUser {
   id: Float
   name: String
 }
@@ -134,10 +154,23 @@ input UniqueEstado {
   NumTemas: Float
 }
 
+input CreateProyecto {
+  name: String
+  description: String
+}
+
+input UniqueProyecto {
+  id: Float
+  name: String
+  description: String
+}
+
 type Subscription {
-  tema: Tema!
   user: User!
+  tema: Tema!
   celda: Celda!
   actor: Actor!
   estado: Estado!
+  proyecto: Proyecto!
+  matriz: Matriz!
 }

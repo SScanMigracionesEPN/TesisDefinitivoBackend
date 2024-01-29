@@ -1,32 +1,31 @@
-version: '3.5'
-
+version: '3'
 services:
-  db:
-    image: postgres
-    restart: always
-    env_file: ./prisma/.env
-    environment:
-      - POSTGRES_PASSWORD=postgres
-    container_name: postgres
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '5432:5432'
+      - '3000:3000'
+    depends_on:
+      - db
+    networks:
+      - sai
+      
+  db:
+    image: postgres:12.9
+    ports:
+      - '5433:5432'  # Cambia el mapeo de puertos a 5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestjs
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    networks:
+      - sai
+    restart: always
+volumes:
+  pgdata:
 
-  # app:
-    
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: nest-docker-postgres
-  #   environment:
-  #     - PORT=3000
-  #   ports:
-  #     - '3000:3000'
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./src:/app/src
 
 
-  

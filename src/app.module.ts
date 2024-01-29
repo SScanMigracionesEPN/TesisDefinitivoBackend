@@ -5,6 +5,7 @@ import { PrismaService } from './prisma.service';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AuthModule } from './modules/auth/auth.module';
+import { TargetingModule } from './modules/targeting/targeting.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { AuthModule } from './modules/auth/auth.module';
       },
     }),
     AuthModule,
+    TargetingModule,
   ],
   controllers: [],
   providers: [PrismaService],

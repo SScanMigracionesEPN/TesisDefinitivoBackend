@@ -1,5 +1,6 @@
 
 import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { User } from "@prisma/client";
 
 @ObjectType()
 export class Matriz {
@@ -7,16 +8,10 @@ export class Matriz {
     @Field(() => Int)
     id: number;
 
+    // @Field(() => Int)
+    // User : User
 
-    @Field({nullable:true})
-    prioridad: number;
-
-    @Field({nullable:true})
-    tiempo: number;
-
-    @Field({nullable:true})
-    coment: string;
-
+    
    
 
 

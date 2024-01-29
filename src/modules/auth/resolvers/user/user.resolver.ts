@@ -13,6 +13,7 @@ import { User } from '../../entities/user.entity';
 import { promises } from 'dns';
 import { CreateUser } from '../../dtos/users/create-user.dto';
 import { UniqueUser } from '../../dtos/users/unique-user.dto';
+import { Prisma } from '@prisma/client';
 
 /////
 
@@ -54,5 +55,14 @@ export class UserResolver {
   @Query(() => User, { name: 'user' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.userService.findOne({ id });
+  }
+  @Query(() => User)
+  findByName(@Args('username', { type: () => String }) username: string) {
+    const request: Prisma.UserWhereUniqueInput = {
+      id: 1,
+      name: username,
+    };
+
+    return this.userService.findOne(request);
   }
 }
