@@ -1,21 +1,17 @@
-import { Field, InputType } from "@nestjs/graphql";
-import { User, Actor, Tema, Celda } from "@prisma/client";
+import { Field, InputType } from '@nestjs/graphql';
+import { User, Actor, Tema, Celda } from '@prisma/client';
 
 @InputType()
-export class CreateMatriz{
-    
-    @Field()
-    user   :   User  
-    @Field()   
-    actores  : Actor[]
-    @Field()
-    temas   :  Tema[]
-    @Field()
-    celdas  :  Celda[]
-
+export class CreateMatriz {
+  @Field()
+  user: User;
+  @Field()
+  actores: Actor[];
+  @Field()
+  temas: Tema[];
+  @Field()
+  celdas: Celda[];
 }
-
-
 
 // id        Int      @id @default(autoincrement())
 // createdAt DateTime @default(now())
@@ -26,7 +22,6 @@ export class CreateMatriz{
 // parent    Boolean
 // hijos     Actor[]  @relation("ActortoActor")
 // celdas    Celda[]
-
 
 // id        Int      @id @default(autoincrement())
 // createdAt DateTime @default(now())

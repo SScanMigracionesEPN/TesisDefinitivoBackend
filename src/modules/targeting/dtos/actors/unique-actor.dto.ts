@@ -1,25 +1,19 @@
-
-import { Field, InputType } from "@nestjs/graphql";
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class UniqueActor {
+  @Field({ nullable: true })
+  id: number;
 
-    @Field({ nullable: true })
-    id: number
+  @Field({ nullable: true })
+  name: string;
 
-    @Field({nullable:true})
-    name: string;
+  @Field()
+  prioridad: number;
 
+  @Field({ nullable: true })
+  coments?: string;
 
-    @Field()
-    prioridad: number;
-
-    @Field({ nullable: true })
-    coments?: string;
-
-    @Field()
-    parent: boolean;
-    
+  @Field()
+  parent: boolean;
 }
-
-

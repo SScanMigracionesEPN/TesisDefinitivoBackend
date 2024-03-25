@@ -5,7 +5,6 @@ export class Actor {
   @Field(() => Int)
   id: number;
 
-
   @Field(() => String)
   name: string;
 
@@ -15,20 +14,18 @@ export class Actor {
   // @Field(() => [Actor])
   // hijos: Actor[];
 
-  // @Field(() => Actor)
-  // Actor : Actor;
+  @Field(() => Int, { nullable: true })
+  actorId?: number;
 
-  // @Field(() => Matrix)
-  // Matriz : Matrix;
+  @Field(() => Int, { nullable: true })
+  matrizId?: number;
 
-  // @Field(() => Topic)
-  // Tema : Topic;
+  @Field(() => Int, { nullable: true })
+  temaId?: number;
 
-  
   @Field(() => String)
   coments?: string;
 
   @Field(() => Boolean)
   parent: boolean;
-
 }

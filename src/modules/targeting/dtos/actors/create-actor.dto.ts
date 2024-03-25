@@ -1,23 +1,28 @@
-import { Field, InputType } from "@nestjs/graphql";
+import { Field, InputType, Int } from '@nestjs/graphql';
 
 @InputType()
-export class CreateActor{
-    
-    @Field()
-    name: string
+export class CreateActor {
+  @Field()
+  name: string;
 
-    @Field()
-    prioridad: number;
+  @Field()
+  prioridad: number;
 
-    @Field()
-    coments?:   string;
+  @Field()
+  coments?: string;
 
-    @Field()
-    parent: boolean
+  @Field(() => Int, { nullable: true })
+  actorId?: number;
 
+  @Field(() => Int, { nullable: true })
+  matrizId?: number;
+
+  @Field(() => Int, { nullable: true })
+  temaId?: number;
+
+  @Field()
+  parent: boolean;
 }
-
-
 
 // id        Int      @id @default(autoincrement())
 // createdAt DateTime @default(now())
@@ -28,7 +33,6 @@ export class CreateActor{
 // parent    Boolean
 // hijos     Actor[]  @relation("ActortoActor")
 // celdas    Celda[]
-
 
 // id        Int      @id @default(autoincrement())
 // createdAt DateTime @default(now())

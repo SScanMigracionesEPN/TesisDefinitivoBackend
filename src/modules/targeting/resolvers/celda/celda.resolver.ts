@@ -25,7 +25,7 @@ export class CeldaResolver {
   ): Promise<Celda> {
     return this.celdaService.create(data);
   }
-  
+
   @Query((returns) => [Celda], { nullable: true })
   async allCeldas(@Context() ctx) {
     return this.celdaService.findAll({});
@@ -50,7 +50,7 @@ export class CeldaResolver {
   newCelda() {
     return this.celdaService.suscription();
   }
-  
+
   @Query(() => Celda, { name: 'celda' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.celdaService.findOne({ id });

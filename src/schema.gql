@@ -11,14 +11,17 @@ type Actor {
   id: Int!
   name: String!
   prioridad: Int!
+  actorId: Int
+  matrizId: Int
+  temaId: Int
   coments: String!
   parent: Boolean!
 }
 
 type Celda {
   id: Int!
-  prioridad: Float
-  tiempo: Float
+  prioridad: Int
+  tiempo: Int
   coment: String
 }
 
@@ -30,7 +33,15 @@ type Estado {
 
 type Matriz {
   id: Int!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  userId: Int!
 }
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
 
 type Proyecto {
   id: Float
@@ -115,11 +126,6 @@ input CreateCelda {
   coment: String
 }
 
-"""
-`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
-"""
-scalar Timestamp
-
 input UniqueCelda {
   id: Float
   prioridad: Float
@@ -131,6 +137,9 @@ input CreateActor {
   name: String!
   prioridad: Float!
   coments: String!
+  actorId: Int
+  matrizId: Int
+  temaId: Int
   parent: Boolean!
 }
 
