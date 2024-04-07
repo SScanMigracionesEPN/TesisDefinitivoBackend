@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { User, Prisma } from '@prisma/client';
 import { PubSub } from 'graphql-subscriptions';
@@ -24,12 +24,25 @@ export class UserService {
   }
 
   async findByName(username: string): Promise<User | null> {
-    return this.prisma.user.findUnique({
+  
+    const user = await this.prisma.user.findFirst({
       where: {
-        id: 1,
-        name: username,
+        name : username,
       },
     });
+
+    if(!user){
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: 'This is a custom message',
+        message: "Credenciales Incorrectas",
+        name: "Rechazado"
+      }, HttpStatus.FORBIDDEN, {
+        cause: "Hola como estas"
+      });
+    }
+
+    return user; 
   }
 
   async findAll(params: {

@@ -68,7 +68,7 @@ type Query {
   estado(id: Int!): Estado!
   allProyectos: [Proyecto!]
   proyecto(id: Int!): Proyecto!
-  allMatrizs: [Matriz!]
+  allMatri: [Matriz!]
   matriz(id: Int!): Matriz!
 }
 
@@ -91,7 +91,7 @@ type Mutation {
   createProyecto(data: CreateProyecto!): Proyecto!
   updateProyecto(updateProyectoInput: UniqueProyecto!): Proyecto!
   removeProyecto(id: Int!): Proyecto!
-  allMatrizs: Matriz!
+  allMatri: Matriz!
   removeMatriz(id: Int!): Matriz!
 }
 

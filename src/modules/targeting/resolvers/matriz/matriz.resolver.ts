@@ -20,13 +20,13 @@ export class MatrizResolver {
   @Mutation((returns) => Matriz)
   // async createMatriz(
   //     @Args("data") data: CreateMatriz,
-  //     @Context() ctx
+  //     @Context() ct
   // ): Promise<Matriz> {
   //     return this.matrizService.create(data)
 
   // }
   @Query((returns) => [Matriz], { nullable: true })
-  async allMatrizs(@Context() ctx) {
+  async allMatri(@Context() ctx) {
     return this.matrizService.findAll({});
   }
 

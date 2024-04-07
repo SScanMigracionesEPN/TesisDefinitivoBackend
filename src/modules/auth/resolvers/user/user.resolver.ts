@@ -56,13 +56,15 @@ export class UserResolver {
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.userService.findOne({ id });
   }
-  @Query(() => User)
+  @Query(() => User,{
+    name:"findByName"
+  })
   findByName(@Args('username', { type: () => String }) username: string) {
     const request: Prisma.UserWhereUniqueInput = {
       id: 1,
       name: username,
     };
 
-    return this.userService.findOne(request);
+    return this.userService.findByName(username);
   }
 }
